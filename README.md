@@ -2,7 +2,17 @@
 
 Este projeto é uma aplicação web desenvolvida em JavaServer Faces (JSF) que permite aos usuários gerenciar suas tarefas de forma eficiente. A aplicação segue o padrão MVC (Model-View-Controller), promovendo uma estrutura clara e organizada.
 
-## Estrutura do Projeto
+
+## Tecnologias Utilizadas
+- **Java**
+- **HTML**
+- **CSS**
+- **JavaScript**
+- **JSF**
+- **PrimeFaces** (framework para JSF)
+
+
+## Estrutura do Projeto JSF - item a)
 
 ### 1. **Bean**
 - **TarefaBean.java**: Este é o bean principal do projeto, responsável pela lógica de negócios relacionada às tarefas. Ele manipula as requisições do usuário e interage com a camada de dados para realizar operações como criar, buscar, excluir e concluir tarefas.
@@ -27,7 +37,7 @@ A aplicação possui uma interface limpa, minimalista e fácil de entender, proj
 ![image](https://github.com/user-attachments/assets/5c1c3b28-eebc-4f41-b8f7-8376cc1fe6d0)
 
 
-## Funcionalidades Implementadas
+## Funcionalidades Implementadas - item b)
 - **Criar Tarefa**: Permite ao usuário adicionar novas tarefas ao sistema.
 - **Buscar Tarefas**: Facilita a busca por tarefas existentes com base em critérios específicos.
 - **Excluir Tarefa**: Permite que o usuário remova tarefas do sistema.
