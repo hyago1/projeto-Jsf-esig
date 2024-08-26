@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<style>
+body {
+	margin: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #17211f;
+}
+
+.division {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #000000;
+	width: 40%;
+	height: 60%;
+	border-radius: 20px;
+	gap: 3px;
+}
+
+.btns {
+margin-top:20px;
+	background-color: #313131;
+	border-radius: 20px;
+	padding: 15px;
+	width: 80%;
+	border: 1px solid transparent;
+	cursor: pointer;
+	border-style: none;
+	font-weight: bolder;
+	color: white;
+}
+.btns:hover {
+background-color: #2f3d39;
+
+}
+.txtFields {
+background-color:#c4c4c4;
+	padding: 15px;
+	width: 80%;
+	outline: none;
+	border-radius: 20px;
+	border: 1px solid;
+	border-color: grey;
+	transition-duration: 1s;
+}
+#entrar{
+
+margin-top: 20px;
+}
+.lbl{
+font-family:fantasy;
+color:gray;
+width:80%;
+text-align: left;
+
+}
+</style>
+<body>
+
+	<h:form id="some-form" class="division">
+	<p:outputLabel class="lbl">Usuario:</p:outputLabel>
+		<h:inputText value="#{userBean.user}"  class="txtFields" placeholder="Teste"></h:inputText>
+	<p:outputLabel class="lbl">Senha:</p:outputLabel>
+		<h:inputText  value="#{userBean.senha}" class="txtFields"></h:inputText>
+
+		<h:commandButton class="btns"  id="entrar" value="Entrar" action="#{userBean.salvar}"></h:commandButton>
+	
+
+
+	</h:form>
+
+<script type="">
+
+</script>
+
+</body>
+</html>
