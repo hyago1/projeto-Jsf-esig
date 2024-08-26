@@ -101,8 +101,8 @@ public class TarefaBean {
             .filter(tarefa -> (numero == null || tarefa.getNumero() == numero))
             .filter(tarefa -> (titulo == null || tarefa.getTitulo().contains(titulo) 
                                 || tarefa.getTitulo().contains(titulo)))
-            .filter(tarefa -> (concluida == null || tarefa.getConcluida().contains(concluida)))
-            .filter(tarefa -> (responsavel == null || tarefa.getResponsavel().equals(responsavel)))
+            .filter(tarefa -> (concluida == null || tarefa.getConcluida().equals(concluida)))
+            .filter(tarefa -> (responsavel == null || tarefa.getResponsavel().contains(responsavel)))
             .collect(Collectors.toList());
         
         tarefas = tarefasFiltradas;
