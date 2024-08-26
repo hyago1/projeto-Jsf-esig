@@ -306,17 +306,17 @@ li {
 		<h:form class="searchTarefas" style="width: 100%;">
 
 			<span style="margin-bottom: 5px;" class="ui-input-icon-left">
-				<i class="pi pi-search" /> <p:inputText  placeholder="Numero" />
+				<i class="pi pi-search" /> <p:inputText  placeholder="Numero" value="#{tarefaBean.numero}"/>
 			</span><br></br> <span style="margin-bottom: 5px;"
-				class="ui-input-icon-left"> <i class="pi pi-search" /> <p:inputText
+				class="ui-input-icon-left"> <i class="pi pi-search" /> <p:inputText value="#{tarefaBean.titulo}"
 					placeholder="Titulo/Descrição" />
 			</span>
 			<div style="display: flex; align-content: center;  padding: 5px;">
 				<div class="field col-18 md:col-10">
 					<p:selectOneMenu id="option">
-						<f:selectItem  itemLabel="Em andamento" itemValue="and" />
+						<f:selectItem  itemLabel="Em andamento" value="#{tarefaBean.concluida}" itemValue="false" />
 						<br></br>
-						<f:selectItem itemLabel="Concluida" itemValue="con" />
+						<f:selectItem itemLabel="Concluida" value="#{tarefaBean.concluida}" itemValue="true" />
 					</p:selectOneMenu>
 
 
@@ -330,7 +330,7 @@ li {
 					</p:selectOneMenu>
 				</div>
 				
-				<p:commandButton value="Buscar" style="height:auto;"></p:commandButton>
+				<h:commandButton value="Buscar" action="#{tarefaBean.buscar}" style="height:auto;"></h:commandButton>
 
 			</div>
 
@@ -376,7 +376,7 @@ li {
 									<h:commandButton
 										action="#{tarefaBean.excluirTarefa(tarefa.numero)}"
 										class="btnsActions" id="excluir" value="Excluir"></h:commandButton>
-									<h:commandButton action="#{tarefaBean.salvar}"
+									<h:commandButton action="#{tarefaBean.concluirTarefa(tarefa.numero)}"
 										class="btnsActions" id="concluir" value="Concluir"></h:commandButton>
 
 								</h:form>

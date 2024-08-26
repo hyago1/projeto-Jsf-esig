@@ -94,6 +94,50 @@ System.out.println("DELETE ------------------");
 	
 	
 	
+	public void concluir(int numero) {
+
+System.out.println("DELETE ------------------");
+		try {
+
+			if (GetConnection() != null && !GetConnection().isClosed()) {
+				System.out.println("Conectado ao banco de dados!");
+				System.out.println("Conectado ao banco de dados! 11111111111111111111111111");
+				System.out.println("Conectado ao banco de dados! 11111111111111111111111111");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");
+				PreparedStatement pstm = GetConnection().prepareStatement( 
+						"update tarefas set concluida = 'true' where numero = ?;");
+
+System.out.println("update ------------------");
+				pstm.setInt(1, numero);
+			
+
+				ResultSet rs = pstm.executeQuery();
+			
+				rs.close();
+				pstm.close();
+				GetConnection().close();
+
+			} else {
+				
+
+				System.out.println("Não foi possível conectar ao banco de dados: 00000000000000000000000000000");
+				System.out.println("Não foi possível conectar ao banco de dados. *********************");
+				System.out.println("Não foi possível conectar ao banco de dados. *********************");
+				System.out.println("Não foi possível conectar ao banco de dados. *********************");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
  	public void salvar(String titulo, String descricao, String responsavel, String prioridade, Date data) {
 		System.out.println("Inicio PostgreSQLMySQL");
 		try {

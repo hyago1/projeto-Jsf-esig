@@ -101,15 +101,13 @@ public class TarefaBean {
             .filter(tarefa -> (numero == null || tarefa.getNumero() == numero))
             .filter(tarefa -> (titulo == null || tarefa.getTitulo().contains(titulo) 
                                 || tarefa.getTitulo().contains(titulo)))
-            .filter(tarefa -> (concluida == null || tarefa.getConcluida().equals(Boolean.valueOf(concluida))))
+            .filter(tarefa -> (concluida == null || tarefa.getConcluida().contains(concluida)))
             .filter(tarefa -> (responsavel == null || tarefa.getResponsavel().equals(responsavel)))
             .collect(Collectors.toList());
         
         tarefas = tarefasFiltradas;
         
-
-		FacesContext.getCurrentInstance().getExternalContext().redirect("cadastrarTarefa.jsf");
-		
+      
 		
 		return null;
     }
@@ -128,6 +126,15 @@ public class TarefaBean {
 	public String excluirTarefa(String numero) throws SQLException, IOException {
 		int numeroTarefa = Integer.parseInt(numero);
 		dao.excluir(numeroTarefa);
+
+		FacesContext.getCurrentInstance().getExternalContext().redirect("cadastrarTarefa.jsf");
+		return null;
+	}
+	
+//Concluir	
+	public String concluirTarefa(String numero) throws SQLException, IOException {
+		int numeroTarefa = Integer.parseInt(numero);
+		dao.concluir(numeroTarefa);
 
 		FacesContext.getCurrentInstance().getExternalContext().redirect("cadastrarTarefa.jsf");
 		return null;
