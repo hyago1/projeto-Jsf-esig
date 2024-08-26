@@ -24,6 +24,8 @@ Foi criada uma tabela "teste" no banco de dados com os seguintes campos:
 
 ### 5. **Interface do Usuário**
 A aplicação possui uma interface limpa, minimalista e fácil de entender, projetada para proporcionar uma boa experiência ao usuário.
+![image](https://github.com/user-attachments/assets/5c1c3b28-eebc-4f41-b8f7-8376cc1fe6d0)
+
 
 ## Funcionalidades Implementadas
 - **Criar Tarefa**: Permite ao usuário adicionar novas tarefas ao sistema.
