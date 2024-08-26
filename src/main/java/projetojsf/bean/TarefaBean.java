@@ -127,7 +127,7 @@ public class TarefaBean {
 		int numeroTarefa = Integer.parseInt(numero);
 		dao.excluir(numeroTarefa);
 
-		FacesContext.getCurrentInstance().getExternalContext().redirect("cadastrarTarefa.jsf");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
 		return null;
 	}
 	
@@ -136,14 +136,14 @@ public class TarefaBean {
 		int numeroTarefa = Integer.parseInt(numero);
 		dao.concluir(numeroTarefa);
 
-		FacesContext.getCurrentInstance().getExternalContext().redirect("cadastrarTarefa.jsf");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
 		return null;
 	}
 //Cadastrar/Salvar Tarefas
 	public String salvar() throws SQLException, IOException {
 		dao.salvar(titulo, descricao, responsavel, prioridade, data);
 
-		FacesContext.getCurrentInstance().getExternalContext().redirect("cadastrarTarefa.jsf");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
 
 		return null;
 	}

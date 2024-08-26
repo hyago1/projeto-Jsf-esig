@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>Gerenciador de Tarefas</title>
+</h:head>
+<style>
+*::-webkit-scrollbar {
+	height: 10px;
+	width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	border-radius: 5px;
+	background-color: #DFE9EB;
+}
+
+*::-webkit-scrollbar-track:hover {
+	background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-track:active {
+	background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	background-color: #466341;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background-color: #4F843D;
+}
+
+*::-webkit-scrollbar-thumb:active {
+	background-color: #62A34B;
+}
+
+body {
+	position: relative;
+	margin: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #ebf0ed;
+	margin: 0px;
+}
+
+.division, .divisionTarefa {
+	margin: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: white;
+	width: 42%;
+	height: auto;
+	border-radius: 20px;
+	padding: 10px;
+	gap: 3px;
+}
+
+.division {
+	height: 90%;
+}
+
+.btns {
+	margin-top: 20px;
+	background-color: #313131;
+	border-radius: 20px;
+	padding: 20px;
+	width: 80%;
+	border: 1px solid transparent;
+	cursor: pointer;
+	border-style: none;
+	font-weight: bolder;
+	color: white;
+}
+
+.btns:hover {
+	background-color: #2f3d39;
+}
+
+.txtFields {
+	background-color: #c4c4c4;
+	padding: 5px;
+	width: 80%;
+	outline: none;
+	border-radius: 20px;
+	border: 1px solid;
+	border-color: grey;
+	transition-duration: 1s;
+}
+
+.custom-calendar {
+	margin: 0px;
+	outline: none;
+}
+
+.divisionTarefa {
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80%;
+	padding: 20px;
+}
+
+ul {
+	gap: 10px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	grid-template-columns: 30% 30% 30%;
+	grid-template-rows: 80% 80% 80%;
+	list-style: none;
+	height: 100%;
+	padding: 0px;
+	display: grid;
+}
+
+#entrar {
+	margin-top: 20px;
+}
+
+.lbl {
+	font-family: fantasy;
+	color: gray;
+	width: 80%;
+	text-align: left;
+}
+
+.tarefas {
+	position: relative;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	border-radius: 15px;
+	background-color: #175a23;
+	height: 10em;
+	width: 100%;
+	margin: 5px;
+	margin-bottom: 20px;
+	padding-inline: 12px;
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 20px;
+-webkit-box-shadow: 0px 21px 17px -13px rgba(148,153,150,1);
+-moz-box-shadow: 0px 21px 17px -13px rgba(148,153,150,1);
+box-shadow: 0px 21px 17px -13px rgba(148,153,150,1);
+}
+
+li {
+	height: auto;
+}
+
+.tarefas h3 {
+	margin: 5px;
+	padding: 0px;
+}
+
+.responsavel {
+	margin-top: 20px;
+	font-size: 15px;
+}
+
+.tarefas:hover {
+	background-color: #1b6829;
+	transition-duration:400ms;
+    transform: scale(1.1);
+}
+
+.tarefas:hover #actions {
+	display: flex;
+	}
+
+.tarefas .titulo:hover {
+	color: #00f879;
+	cursor: pointer;
+}
+
+#actions {
+	display: none;
+	position: absolute;
+	bottom: 14px;
+	left: 2px;
+	width: 100%;
+}
+
+.btnsActions {
+	border: none;
+	margin: 2px;
+	border-radius: 4px;
+	width: auto;
+	padding: 2px;
+	background-color: #66a170;
+	cursor: pointer;
+	font-size: 12px;
+}
+
+.btnsActions:hover {
+	background-color: #aac9af;
+}
+
+#blur-background {
+	position: fixed; /* Fixa o div na tela */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.5);
+	/* Cor de fundo semitransparente */
+	backdrop-filter: blur(10px); /* Aplica o efeito de desfoque */
+	z-index: 0;
+	/* Z-index baixo para que fique atrás de outros elementos */
+	display: none; /* Inicialmente escondido */
+}
+
+.blur-active {
+	display: block;
+	/* Mostra o div quando a classe 'blur-active' é adicionada */
+}
+
+.descTarefa {
+	z-index: 1;
+	width: 90%;
+	height: 60%;
+	position: fixed;
+	top: 25%;
+	left: 35%;
+	color: black;
+	display: none;
+}
+
+#fecharDescTarefa {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	padding: 10px;
+	border: none;
+	background-color: grey;
+}
+
+#fecharDescTarefa:hover {
+	background-color: #c8c8c8;
+}
+
+.divisionTarefa h2 {
+	padding: 0px;
+	margin: 0px;
+}
+
+.lista {
+	width: 100%;
+	height: 100%;
+
+	overflow-y: auto;
+}
+</style>
+<body>
+
+
+
+
+	<h:form id="formTarefa" class="division">
+
+
+		<p:outputLabel class="lbl">Titulo:</p:outputLabel>
+		<p:inputText id="txt1" value="#{tarefaBean.titulo}" required="true"
+			class="txtFields"></p:inputText>
+		<p:outputLabel class="lbl">Descrição:</p:outputLabel>
+		<p:inputTextarea value="#{tarefaBean.descricao}" required="true"
+			class="txtFields"></p:inputTextarea>
+		<p:outputLabel class="lbl">Responsavel:</p:outputLabel>
+		<p:inputText value="#{tarefaBean.responsavel}" required="true"
+			class="txtFields"></p:inputText>
+		<p:outputLabel class="lbl">Prioridade:</p:outputLabel>
+		<p:selectOneButton required="true" value="#{tarefaBean.prioridade}">
+			<f:selectItem itemLabel="Alta" itemValue="alta" />
+			<f:selectItem itemLabel="Media" itemValue="media" />
+			<f:selectItem itemLabel="Baixa" itemValue="baixa" />
+		</p:selectOneButton>
+		<p:outputLabel required="true" for="data" class="lbl">Data:</p:outputLabel>
+		<p:calendar id="data" value="#{tarefaBean.data}"
+			pattern="yyyy-MM-dd" showButtonPanel="true" />
+
+		<h:commandButton action="#{tarefaBean.salvar}" class="btns"
+			id="entrar" value="Cadastrar"></h:commandButton>
+
+
+
+	</h:form>
+
+
+
+	<div id="some-form" class="divisionTarefa">
+		<h:form class="searchTarefas" style="width: 100%;">
+
+			<span style="margin-bottom: 5px;" class="ui-input-icon-left">
+				<i class="pi pi-search" /> <p:inputText  placeholder="Numero" value="#{tarefaBean.numero}"/>
+			</span><br></br> <span style="margin-bottom: 5px;"
+				class="ui-input-icon-left"> <i class="pi pi-search" /> <p:inputText value="#{tarefaBean.titulo}"
+					placeholder="Titulo/Descrição" />
+			</span>
+			<div style="display: flex; align-content: center;  padding: 5px;">
+				<div class="field col-18 md:col-10">
+					<p:selectOneMenu id="option">
+					    <f:selectItem itemLabel="Todos" itemValue="all" />
+						<f:selectItem  itemLabel="Em andamento" value="#{tarefaBean.concluida}" itemValue="false" />
+						<br></br>
+						<f:selectItem itemLabel="Concluida" value="#{tarefaBean.concluida}" itemValue="true" />
+					</p:selectOneMenu>
+
+
+				</div>
+				<div class="field col-18 md:col-10">
+					<p:selectOneMenu id="option2" style="display:flex;  tex-align:center; flex-direction:column;">
+						<f:selectItem itemLabel="Todos" itemValue="all" />
+						<f:selectItems value="#{tarefaBean.tarefas}" var="tarefa"
+							itemLabel="#{tarefa.responsavel}"
+							itemValue="#{tarefa.responsavel}" />
+					</p:selectOneMenu>
+				</div>
+				
+				<h:commandButton value="Buscar" action="#{tarefaBean.buscar}" style="height:auto;"></h:commandButton>
+
+			</div>
+
+
+
+		</h:form>
+
+		<h2 style="color: white;">Tarefas:</h2>
+		<div class="lista">
+			<ul style="color: white;">
+				<ui:repeat value="#{tarefaBean.tarefas}" varStatus="status"
+					id="listaTarefas" var="tarefa">
+
+
+
+
+					<p:card id="id#{tarefa.numero}" class="descTarefa"
+						style="width: 25rem; margin-bottom: 2em; opacity:1">
+
+
+						<button onclick="fecharDescTarefa(#{status.index})"
+							id="fecharDescTarefa">X</button>
+						<f:facet name="title">Descrição</f:facet>
+
+						<p>#{tarefa.descricao}</p>
+
+					</p:card>
+
+					<li style="height: auto">
+						<div class="tarefas">
+
+							<span>#{tarefa.numero}</span>
+							<h:outputLabel class="titulo"
+								onclick="console.log(#{status.index}); aparecer(#{status.index}); return false;">#{tarefa.titulo}</h:outputLabel>
+							<span class="responsavel">Responsavel:
+								#{tarefa.responsavel} </span>
+
+
+
+							<div id="actions">
+								<h:form>
+									<h:commandButton class="btnsActions" id="editar" value="Editar"></h:commandButton>
+									<h:commandButton
+										action="#{tarefaBean.excluirTarefa(tarefa.numero)}"
+										class="btnsActions" id="excluir" value="Excluir"></h:commandButton>
+									<h:commandButton action="#{tarefaBean.concluirTarefa(tarefa.numero)}"
+									
+										class="btnsActions" id="concluir" value="Concluir"></h:commandButton>
+
+								</h:form>
+							</div>
+						</div>
+					</li>
+				</ui:repeat>
+			</ul>
+
+
+		</div>
+
+	</div>
+
+
+	<script>
+	
+	function aparecer(num){
+		console.log(num)
+	    var infoDesc = document.getElementById('listaTarefas:'+num+':id'); // ID gerado
+	    
+	    
+	    
+    if (infoDesc) {
+        infoDesc.style.display = "flex"; 
+
+        document.getElementById('formTarefa').style.opacity = '0.2';
+        document.querySelector('.descTarefa').style.opacity = '1.0'; 
+     
+        
+    } else {
+        console.error("Elemento não encontrado com ID:", 'id' + num); // Log de erro
+    }
+	}
+	
+	
+function fecharDescTarefa(num){   
+    
+    document.getElementById('some-form').style.opacity = '1';
+    document.getElementById('formTarefa').style.opacity = '1';
+	 var infoDesc = document.getElementById('listaTarefas:'+num+':id'); 
+	infoDesc.style.display = "none"
+	}
+	
+	</script>
+
+</body>
+</html>
