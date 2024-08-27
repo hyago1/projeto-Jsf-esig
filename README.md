@@ -24,7 +24,7 @@ Este projeto é uma aplicação web desenvolvida em JavaServer Faces (JSF) que p
 - **TarefaModel.java**: Este modelo representa a estrutura das tarefas na aplicação. Ele contém atributos que correspondem aos campos da tabela no banco de dados e métodos para manipular esses dados.
 
 ### 4. **Banco de Dados**
-Foi criada uma tabela "teste" no banco de dados com os seguintes campos:
+Foi criada no banco de dados uma tabela "tarefas" com os seguintes campos:
 - **numero**: Identificador único da tarefa.
 - **titulo**: Título descritivo da tarefa.
 - **descricao**: Detalhes adicionais sobre a tarefa.
