@@ -42,6 +42,7 @@ A aplicação possui uma interface limpa, minimalista e fácil de entender, proj
 - **Buscar Tarefas**: Facilita a busca por tarefas existentes com base em critérios específicos.
 - **Excluir Tarefa**: Permite que o usuário remova tarefas do sistema.
 - **Concluir Tarefa**: Marca uma tarefa como concluída.
+- **Editar Tarefa**: Edita uma tarefa - (bug - Edita apenas apartir da segunda tarefa).
 
 ## Instruções para Execução Local
 
