@@ -156,9 +156,9 @@ ul {
 	font-weight: 400;
 	font-style: normal;
 	font-size: 20px;
--webkit-box-shadow: 0px 21px 17px -13px rgba(148,153,150,1);
--moz-box-shadow: 0px 21px 17px -13px rgba(148,153,150,1);
-box-shadow: 0px 21px 17px -13px rgba(148,153,150,1);
+	-webkit-box-shadow: 0px 21px 17px -13px rgba(148, 153, 150, 1);
+	-moz-box-shadow: 0px 21px 17px -13px rgba(148, 153, 150, 1);
+	box-shadow: 0px 21px 17px -13px rgba(148, 153, 150, 1);
 }
 
 li {
@@ -177,13 +177,13 @@ li {
 
 .tarefas:hover {
 	background-color: #1b6829;
-	transition-duration:400ms;
-    transform: scale(1.1);
+	transition-duration: 400ms;
+	transform: scale(1.1);
 }
 
 .tarefas:hover #actions {
 	display: flex;
-	}
+}
 
 .tarefas .titulo:hover {
 	color: #00f879;
@@ -264,8 +264,12 @@ li {
 .lista {
 	width: 100%;
 	height: 100%;
-
 	overflow-y: auto;
+}
+.edit{
+	-webkit-box-shadow: 0px 21px 17px -13px rgba(148, 153, 150, 1);
+	-moz-box-shadow: 0px 21px 17px -13px rgba(148, 153, 150, 1);
+	box-shadow: 0px 21px 17px -13px rgba(148, 153, 150, 1);
 }
 </style>
 <body>
@@ -292,8 +296,8 @@ li {
 			<f:selectItem itemLabel="Baixa" itemValue="baixa" />
 		</p:selectOneButton>
 		<p:outputLabel required="true" for="data" class="lbl">Data:</p:outputLabel>
-		<p:calendar id="data" value="#{tarefaBean.data}"
-			pattern="yyyy-MM-dd" showButtonPanel="true" />
+		<p:calendar id="data" value="#{tarefaBean.data}" pattern="yyyy-MM-dd"
+			showButtonPanel="true" />
 
 		<h:commandButton action="#{tarefaBean.salvar}" class="btns"
 			id="entrar" value="Cadastrar"></h:commandButton>
@@ -308,32 +312,39 @@ li {
 		<h:form class="searchTarefas" style="width: 100%;">
 
 			<span style="margin-bottom: 5px;" class="ui-input-icon-left">
-				<i class="pi pi-search" /> <p:inputText  placeholder="Numero" value="#{tarefaBean.numero}"/>
-			</span><br></br> <span style="margin-bottom: 5px;"
-				class="ui-input-icon-left"> <i class="pi pi-search" /> <p:inputText value="#{tarefaBean.titulo}"
-					placeholder="Titulo/Descrição" />
+				<i class="pi pi-search" /> <p:inputText placeholder="Numero"
+					value="#{tarefaBean.numero}" />
 			</span>
-			<div style="display: flex; align-content: center;  padding: 5px;">
+			<br></br>
+			<span style="margin-bottom: 5px;" class="ui-input-icon-left">
+				<i class="pi pi-search" /> <p:inputText
+					value="#{tarefaBean.titulo}" placeholder="Titulo/Descrição" />
+			</span>
+			<div style="display: flex; align-content: center; padding: 5px;">
 				<div class="field col-18 md:col-10">
 					<p:selectOneMenu id="option">
-					    <f:selectItem itemLabel="Todos" itemValue="all" />
-						<f:selectItem  itemLabel="Em andamento" value="#{tarefaBean.concluida}" itemValue="false" />
+						<f:selectItem itemLabel="Todos" itemValue="all" />
+						<f:selectItem itemLabel="Em andamento"
+							value="#{tarefaBean.concluida}" itemValue="false" />
 						<br></br>
-						<f:selectItem itemLabel="Concluida" value="#{tarefaBean.concluida}" itemValue="true" />
+						<f:selectItem itemLabel="Concluida"
+							value="#{tarefaBean.concluida}" itemValue="true" />
 					</p:selectOneMenu>
 
 
 				</div>
 				<div class="field col-18 md:col-10">
-					<p:selectOneMenu id="option2" style="display:flex;  tex-align:center; flex-direction:column;">
+					<p:selectOneMenu id="option2"
+						style="display:flex;  tex-align:center; flex-direction:column;">
 						<f:selectItem itemLabel="Todos" itemValue="all" />
 						<f:selectItems value="#{tarefaBean.tarefas}" var="tarefa"
 							itemLabel="#{tarefa.responsavel}"
 							itemValue="#{tarefa.responsavel}" />
 					</p:selectOneMenu>
 				</div>
-				
-				<h:commandButton value="Buscar" action="#{tarefaBean.buscar}" style="height:auto;"></h:commandButton>
+
+				<h:commandButton value="Buscar" action="#{tarefaBean.buscar}"
+					style="height:auto;"></h:commandButton>
 
 			</div>
 
@@ -346,6 +357,56 @@ li {
 			<ul style="color: white;">
 				<ui:repeat value="#{tarefaBean.tarefas}" varStatus="status"
 					id="listaTarefas" var="tarefa">
+
+
+
+					<h:form class="edit" id="idE#{tarefa.numero}"
+						style="position:absolute; z-index:1; padding:10px;gap:5px; display:none; top:0px; right:0px; background-color:black; margin:5px; border-radius:4px;color:white;">
+					
+						<h2>Editar</h2>
+
+						<div style="margin-inline:5px; margin-top:10px">
+							<p:outputLabel for="titulo" value="Título:" />
+							<p:inputText id="titulo" value="#{tarefaBean.titulo}"
+								required="true" />
+							<p:message for="titulo" />
+						</div>
+						<div style="margin-inline:5px; margin-top:10px">
+							<p:outputLabel for="descricao" value="Descrição:" />
+							<p:inputTextarea id="descricao" value="#{tarefaBean.descricao}"
+								required="true" />
+							<p:message for="descricao" />
+						</div>
+						<div style="margin-inline:5px; margin-top:10px">
+							<p:outputLabel for="responsavel" value="Responsavel: " />
+							<p:inputText id="responsavel" value="#{tarefaBean.responsavel}"
+								required="true" />
+							<p:message for="responsavel" />
+						</div>
+						<div style="margin-inline:5px; margin-top:10px" >
+							<p:outputLabel for="prioridade" value="Prioridade:" />
+							<p:selectOneMenu id="prioridade" value="#{tarefaBean.prioridade}">
+								<f:selectItem itemLabel="baixa" itemValue="baixa" />
+								<f:selectItem itemLabel="media" itemValue="media" />
+								<f:selectItem itemLabel="alta" itemValue="alta" />
+							</p:selectOneMenu>
+							<p:message for="prioridade" />
+						</div>
+
+						<div style="margin-inline:5px; margin-top:10px">
+							<p:outputLabel for="data" value="Data:" />
+								<p:calendar id="data" value="#{tarefaBean.data}" pattern="yyyy-MM-dd"
+			showButtonPanel="true" />
+							<p:message for="data" />
+						</div>
+
+						<div style="margin-inline:5px; margin-top:10px">
+							<p:commandButton value="Salvar Tarefa" style="margin-inline:5px; margin-top:5px;"
+								action="#{tarefaBean.editarTarefa(tarefa.numero)}" update="@form" />
+								<p:commandButton value="Cancelar" onclick="fecharEdit(event,#{status.index}) "
+								 update="@form" />
+						</div>
+					</h:form>
 
 
 
@@ -375,12 +436,12 @@ li {
 
 							<div id="actions">
 								<h:form>
-									<h:commandButton class="btnsActions" id="editar" value="Editar"></h:commandButton>
+									<h:commandButton class="btnsActions" id="editar"   onclick="edit(event,#{tarefa.numero},#{status.index}) " value="Editar"></h:commandButton>
 									<h:commandButton
 										action="#{tarefaBean.excluirTarefa(tarefa.numero)}"
 										class="btnsActions" id="excluir" value="Excluir"></h:commandButton>
-									<h:commandButton action="#{tarefaBean.concluirTarefa(tarefa.numero)}"
-									
+									<h:commandButton
+										action="#{tarefaBean.concluirTarefa(tarefa.numero)}"
 										class="btnsActions" id="concluir" value="Concluir"></h:commandButton>
 
 								</h:form>
@@ -397,6 +458,16 @@ li {
 
 
 	<script>
+
+	
+	function edit(event,id,num){
+		
+	    var infoDescEdit = document.getElementById('listaTarefas:'+num+':idE'); 
+	    console.log(infoDescEdit)
+		infoDescEdit.style.display = "block"
+		// ID gerado
+	    event.preventDefault()   
+	}
 	
 	function aparecer(num){
 		console.log(num)
@@ -416,6 +487,16 @@ li {
     }
 	}
 	
+	
+	
+	function fecharEdit(event,num){   
+	    
+		   var infoDescEdit = document.getElementById('listaTarefas:'+num+':idE'); 
+			
+			infoDescEdit.style.display = "none"
+			// ID gerado
+		
+		}
 	
 function fecharDescTarefa(num){   
     

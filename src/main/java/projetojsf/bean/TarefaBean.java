@@ -139,6 +139,25 @@ public class TarefaBean {
 		FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
 		return null;
 	}
+	
+	
+//editar 	 
+	public String editarTarefa(String numero) throws SQLException, IOException {
+	int numeroTarefa = Integer.parseInt(numero);
+	
+	System.out.println(numero);
+	System.out.println(titulo);
+	System.out.println(descricao);
+	System.out.println(responsavel);
+	System.out.println(prioridade);
+	System.out.println(data);
+	
+	System.out.println(numeroTarefa);
+	dao.editar(numeroTarefa,titulo,descricao,responsavel,prioridade,data);
+
+	FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsf");
+	return null;
+}
 //Cadastrar/Salvar Tarefas
 	public String salvar() throws SQLException, IOException {
 		dao.salvar(titulo, descricao, responsavel, prioridade, data);
