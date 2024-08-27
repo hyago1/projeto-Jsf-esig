@@ -49,7 +49,7 @@ A aplicação possui uma interface limpa, minimalista e fácil de entender, proj
 Para rodar este projeto em um ambiente local, siga as instruções abaixo:
 
 1. **Pré-requisitos**:
-   - JDK 1.8 ou superior instalado.
+   - JDK 1.8. Configurar a versão do java do projeto no eclipse.
    - Apache Tomcat (versão 9.0)
    - Banco de dados PostgreSQL configurado com a tabela apropriada.
    - Necessario mudar os valores no arquivo TarefaDao.java de acordo com a sua tabela para a conexão. 
