@@ -55,5 +55,5 @@ Para rodar este projeto em um ambiente local, siga as instruções abaixo:
    - Necessario mudar os valores no arquivo TarefaDao.java de acordo com a sua tabela para a conexão. 
 
 2. **Clonar o Repositório**:
-   ```bash
+
    git clone <URL do repositório>
